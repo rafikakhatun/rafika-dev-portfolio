@@ -9,8 +9,9 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Hero/>
+      <CursorTrail />
+      <Navbar />
+      <Hero />
     </>
   )
 }
