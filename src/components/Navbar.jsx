@@ -28,12 +28,12 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-[100] 
-     w-[97%] max-w-7xl 
-     flex items-center py-4 px-6 
-     rounded-2xl 
-     transition-all duration-500 relative
-    border border-white/20
-   ${scrolled
+       w-[97%] max-w-7xl 
+        flex items-center py-4 px-6 
+       rounded-2xl 
+       transition-all duration-500 relative
+      border border-white/20
+      ${scrolled
           ? "bg-white/10 backdrop-blur-xl shadow-lg"
           : "bg-white/5 backdrop-blur-xl"
         }`}
@@ -51,10 +51,14 @@ const Navbar = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <span className="text-2xl font-black tracking-tighter uppercase transition-all duration-300">
-            <span className="bg-gradient-to-r from-[#23D3EE] to-[#AE59FF] bg-clip-text text-transparent group-hover:brightness-125">
-              Rafika Khatun
-            </span>
-            <span className="text-[#AE59FF] text-3xl">.</span>
+            <span className="bg-gradient-to-r from-[#23D3EE] to-[#AE59FF] 
+           bg-clip-text text-transparent 
+           drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] 
+           group-hover:drop-shadow-[0_4px_6px_rgba(35,211,238,0.5)] 
+           transition-all duration-300">
+            Rafika Khatun
+          </span>
+            <span className="text-[#AE59FF] text-3xl">..</span>
           </span>
         </div>
 
@@ -63,8 +67,8 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${active === link.title ? "text-white" : "text-gray-400"
-                } hover:text-white text-[13px] font-bold uppercase tracking-[2px] cursor-pointer transition-all duration-300 relative group`}
+              className={`${active === link.title ? "text-[#23D3EE]" : "text-gray-300"
+                } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
               onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}>{link.title}</a>
