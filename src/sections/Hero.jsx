@@ -1,92 +1,131 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FiDownload } from "react-icons/fi";
+import { motion } from "framer-motion";
+import ParticlesBackground from "../components/ParticlesBackground";
+
+const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
 const Hero = () => {
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[index];
+    let speed = isDeleting ? 50 : 100;
+
+    const timer = setTimeout(() => {
+      setText((prev) =>
+        isDeleting
+          ? current.substring(0, prev.length - 1)
+          : current.substring(0, prev.length + 1)
+      );
+
+      if (!isDeleting && text === current) {
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && text === "") {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % roles.length);
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, index]);
+
   return (
-    <section
-      id="home"
-      className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-20 overflow-hidden bg-[#030014]"
-    >
-      {/* Background Glow */}
-      <div className="absolute top-[-10%] left-[-5%] w-[300px] h-[300px] bg-[#23D3EE]/10 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-[-10%] right-[-5%] w-[300px] h-[300px] bg-[#AE59FF]/10 blur-[120px] rounded-full"></div>
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-[#030014] px-6 md:px-20">
+      <ParticlesBackground />
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
 
-      {/* LEFT CONTENT */}
-      <div className="flex-1 flex flex-col items-start z-10 animate-fadeIn">
-        
-        {/* Badge */}
-        <div className="px-4 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6">
-          <span className="text-xs md:text-sm text-gray-300 uppercase tracking-widest">
-            🚀 Available for Jobs & Freelance
-          </span>
-        </div>
+        {/* LEFT SIDE */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex-1 text-left"
+        >
+          <p className="text-gray-300 text-lg mb-2">
+            Hello, It's Me
+          </p>
 
-        {/* Heading */}
-        <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-4">
-          Hi, I'm <br />
-          <span className="bg-gradient-to-r from-[#23D3EE] to-[#AE59FF] bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-3">
             Rafika Khatun
-          </span>
-        </h1>
+          </h1>
 
-        {/* Description */}
-        <p className="text-gray-400 text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
-          I build <span className="text-white font-semibold">modern, responsive & high-performance</span> web applications using React, Tailwind & JavaScript.
-        </p>
+          <h2 className="text-xl md:text-2xl text-white mb-4">
+            And I'm a{" "}
+            <span className="text-[#23D3EE] font-semibold">
+              {text}
+              <span className="animate-pulse">|</span>
+            </span>
+          </h2>
 
-        {/* BUTTONS */}
-        <div className="flex flex-wrap gap-4 mb-10">
-          
-          {/* Explore */}
-          <a href="#projects">
-            <button className="px-8 py-3 rounded-full bg-gradient-to-r from-[#23D3EE] to-[#AE59FF] text-white font-bold text-sm flex items-center gap-2 hover:scale-105 transition-all shadow-lg">
-              Explore My Work <FaArrowRightLong size={18} />
-            </button>
-          </a>
+          <p className="text-gray-400 max-w-md mb-6">
+            I build modern, responsive & high-performance web applications using React, Tailwind & JavaScript.
+          </p>
 
-          {/* Resume */}
-          <a href="/resume.pdf" download>
-            <button className="px-8 py-3 rounded-full border border-white/20 bg-white/5 text-white font-bold text-sm flex items-center gap-2 hover:bg-white/10 transition-all">
-              Download CV <FiDownload size={18} />
-            </button>
-          </a>
-        </div>
+          {/* SOCIAL ICONS */}
+          <div className="flex gap-4 mb-6">
+            {[FaGithub, FaLinkedin, FaTwitter].map((Icon, i) => (
+              <div
+                key={i}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-[#23D3EE] text-[#23D3EE] hover:bg-[#23D3EE] hover:text-black transition cursor-pointer"
+              >
+                <Icon size={18} />
+              </div>
+            ))}
+          </div>
 
-        {/* SOCIAL ICONS */}
-        <div className="flex gap-6 items-center">
-          <a href="https://github.com/" target="_blank">
-            <FaGithub className="text-gray-400 hover:text-[#23D3EE] cursor-pointer transition" size={26} />
-          </a>
-          <a href="https://linkedin.com/" target="_blank">
-            <FaLinkedin className="text-gray-400 hover:text-[#AE59FF] cursor-pointer transition" size={26} />
-          </a>
-          <a href="https://twitter.com/" target="_blank">
-            <FaTwitter className="text-gray-400 hover:text-[#23D3EE] cursor-pointer transition" size={26} />
-          </a>
-        </div>
-      </div>
+          {/* BUTTON */}
+          <button className="px-6 py-3 bg-[#23D3EE] text-black rounded-full font-semibold shadow-lg hover:scale-105 transition">
+            Download CV
+          </button>
+        </motion.div>
 
-      {/* RIGHT SIDE IMAGE */}
-      <div className="flex-1 mt-16 md:mt-0 relative flex justify-center items-center z-10">
-        
-        {/* Rotating Circle */}
-        <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] border border-white/5 rounded-full animate-spin-slow"></div>
+        {/* RIGHT SIDE */}
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex-1 flex justify-center mt-10 md:mt-0"
+        >
+          <div className="relative">
 
-        {/* IMAGE */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl p-2 bg-gradient-to-br from-[#23D3EE]/20 to-[#AE59FF]/20 backdrop-blur-xl border border-white/10 hover:rotate-0 rotate-3 transition-all duration-500 overflow-hidden shadow-2xl">
-          <img
-            src="/profile.jpg"
-            alt="Rafika Khatun"
-            className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition duration-700"
-          />
-        </div>
+            {/* HEXAGON SHAPE */}
+            <motion.div
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-[280px] md:w-[380px] aspect-square relative flex items-center justify-center"
+            >
 
-        {/* Floating Badge */}
-        <div className="absolute bottom-10 -right-6 px-6 py-3 bg-[#030014]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl">
-          <p className="text-[#23D3EE] font-bold text-sm">Frontend Developer</p>
-        </div>
+              {/* OUTER GLOW STRONG */}
+              <div className="absolute inset-0 rounded-[30%] shadow-[0_0_80px_#23D3EE] opacity-80"></div>
+
+              {/* BORDER GLOW */}
+              <div className="absolute inset-0 rounded-[30%] border-4 border-[#23D3EE] blur-md opacity-70"></div>
+
+              {/* INNER SOFT GLOW */}
+              <div className="absolute inset-0 rounded-[30%] bg-[#23D3EE]/10 blur-xl"></div>
+
+              {/* IMAGE */}
+              <div
+                className="w-full h-full overflow-hidden relative z-10"
+                style={{
+                  clipPath:
+                    "polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%)",
+                }}
+              >
+                <img
+                  src="/profile.jpg"
+                  alt="profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+            </motion.div>
+
+          </div>
+        </motion.div>
       </div>
     </section>
   );
