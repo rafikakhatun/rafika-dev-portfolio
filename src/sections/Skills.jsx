@@ -17,6 +17,8 @@ import {
   SiFramer,
   SiCanva,
 } from "react-icons/si";
+import ParticlesBackground from "../components/ParticlesBackground";
+
 
 const skills = [
   { icon: FaHtml5, name: "HTML" },
@@ -35,7 +37,8 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="w-full bg-[#030014] py-20 overflow-hidden">
+    <section className="relative w-full bg-[#030014] py-20 overflow-hidden">
+      <ParticlesBackground />
 
       {/* TITLE */}
       <div className="text-center mb-12">
