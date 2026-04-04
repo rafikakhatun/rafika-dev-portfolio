@@ -39,10 +39,10 @@ const Skills = () => {
 
       {/* TITLE */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
           My <span className="text-[#23D3EE]">Skills</span>
         </h2>
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-400 mt-2 text-sm sm:text-base">
           Modern Applications | Modern Technologies
         </p>
       </div>
@@ -51,10 +51,10 @@ const Skills = () => {
       <div className="relative w-full overflow-hidden">
 
         <motion.div
-          className="flex gap-16 w-max"
+          className="flex gap-8 md:gap-16 w-max"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 20,
+            duration: typeof window !== "undefined" && window.innerWidth < 768 ? 25 : 20,
             repeat: Infinity,
             ease: "linear",
           }}
@@ -66,13 +66,12 @@ const Skills = () => {
                 key={index}
                 whileHover={{ scale: 1.2 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="flex flex-col items-center gap-3 min-w-[100px] cursor-pointer"
+                className="flex flex-col items-center gap-3 min-w-[80px] md:min-w-[100px] cursor-pointer"
               >
                 <Icon
-                  size={60} 
-                  className="text-[#23D3EE]"
+                  className="text-[#23D3EE] text-[40px] sm:text-[50px] md:text-[60px]"
                 />
-                <p className="text-sm text-[#23D3EE]">
+                <p className="text-xs sm:text-sm text-[#23D3EE]">
                   {skill.name}
                 </p>
               </motion.div>
