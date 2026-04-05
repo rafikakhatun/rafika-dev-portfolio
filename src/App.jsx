@@ -7,6 +7,7 @@ import About from './sections/About'
 import Skills from './sections/Skills'
 import Experience from './sections/Experience'
 import Projects from './sections/Projects'
+import Certificates from './sections/Certificates'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
       <Skills/>
       <Experience/>
       <Projects/>
+      <Certificates/>
     </>
   )
 }
