@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
+import profileImage from "../assets/picofme (4).png"
 
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
@@ -109,14 +110,11 @@ const Hero = () => {
 
               {/* IMAGE */}
               <div
-                className="w-full h-full overflow-hidden relative z-10"
-                style={{
-                  clipPath:
-                    "polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0% 50%)",
-                }}
+                className="w-full h-full overflow-hidden relative z-10 "
+                
               >
                 <img
-                  src="/profile.jpg"
+                  src={profileImage}
                   alt="profile"
                   className="w-full h-full object-cover"
                 />
