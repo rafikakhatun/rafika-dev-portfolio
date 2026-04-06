@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
+import ParticlesBackground from "../components/ParticlesBackground";
+
 
 const certificates = [
     {
@@ -35,7 +37,8 @@ const certificates = [
 
 const Certificates = () => {
     return (
-        <section className="w-full bg-[#030014] py-24 px-6 overflow-hidden">
+        <section className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden">
+        <ParticlesBackground/>
             
             {/* SECTION TITLE */}
             <div className="text-center mb-20">
@@ -122,8 +125,7 @@ const Certificates = () => {
             {/* BOTTOM DECORATION */}
             <div className="flex justify-center gap-3 mt-16">
                 <div className="w-12 h-1.5 bg-[#23D3EE] rounded-full shadow-[0_0_10px_#23D3EE]"></div>
-                <div className="w-3 h-1.5 bg-white/10 rounded-full"></div>
-                <div className="w-3 h-1.5 bg-white/10 rounded-full"></div>
+               
             </div>
         </section>
     );
