@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 import { FaLinkedin, FaFacebook, FaGithub, FaYoutube } from "react-icons/fa";
 import ContactParticles from "../components/ContactParticles";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const formRef = useRef();
@@ -21,13 +22,18 @@ const Contact = () => {
     )
       .then(
         () => {
-          alert("Message successfully sent!");
-          setLoading(false);
+          toast.success("Message sent successfully!", {
+            style: {
+              background: "#030014",
+              color: "#23D3EE",
+              border: "1px solid #23D3EE",
+            },
+          }); setLoading(false);
           e.target.reset();
         },
         (error) => {
           console.log(error.text);
-          alert("Something went wrong. Please try again.");
+          toast.error("Something went wrong ❌");
           setLoading(false);
         }
       );

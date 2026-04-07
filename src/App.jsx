@@ -11,12 +11,14 @@ import Certificates from './sections/Certificates'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
 import MusicPlayer from './components/MusicPlayer'
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <Toaster position="top-right" />
       <CursorTrail />
       <Navbar />
       <Hero />
