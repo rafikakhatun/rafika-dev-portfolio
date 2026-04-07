@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiSend, FiLoader } from "react-icons/fi";
 import { FaLinkedin, FaFacebook, FaGithub, FaYoutube } from "react-icons/fa";
 import ContactParticles from "../components/ContactParticles";
 import toast from "react-hot-toast";
+
 
 const Contact = () => {
   const formRef = useRef();
@@ -33,7 +34,7 @@ const Contact = () => {
         },
         (error) => {
           console.log(error.text);
-          toast.error("Something went wrong ❌");
+          toast.error("Something went wrong");
           setLoading(false);
         }
       );
@@ -130,9 +131,19 @@ const Contact = () => {
 
               <button
                 disabled={loading}
-                className="w-full py-4 mt-4 bg-[#23D3EE] text-[#030014] font-black rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_20px_rgba(35,211,238,0.4)] hover:shadow-[0_0_35px_rgba(35,211,238,0.6)] hover:scale-[1.03] active:scale-[0.98] disabled:opacity-50  tracking-wide"
+                className="w-full py-4 mt-4 bg-[#23D3EE] text-[#030014] font-black rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_20px_rgba(35,211,238,0.4)] hover:shadow-[0_0_35px_rgba(35,211,238,0.6)] hover:scale-[1.03] active:scale-[0.98] disabled:opacity-50 tracking-wide"
               >
-                {loading ? "Sending..." : "Send Message"} <FiSend className="stroke-[3px]" />
+                {loading ? (
+                  <>
+                    <FiLoader className="animate-spin text-xl" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <FiSend className="stroke-[3px]" />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
