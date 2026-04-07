@@ -10,6 +10,7 @@ import Projects from './sections/Projects'
 import Certificates from './sections/Certificates'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
+import MusicPlayer from './components/MusicPlayer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
       <Certificates/>
       <Contact/>
       <Footer/>
+      <MusicPlayer />
     </>
   )
 }
