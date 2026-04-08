@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
 import profileImage from "../assets/picofme (4).png"
+import { MailCheck, MailIcon } from "lucide-react";
 
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
@@ -36,14 +37,14 @@ const Hero = () => {
   return (
     <section id="home" className="relative w-full min-h-screen flex items-center justify-center bg-[#030014] px-6 md:px-20">
       <ParticlesBackground />
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
+      <div className="relative z-10 mt-20 md:mt-10 lg:mt-0 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl">
 
         {/* LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="flex-1 text-left"
+          className="flex-1 text-center md:text-left lg:text-left mt-10 md:mt-0 lg:mt-0"
         >
           <p className="text-gray-300 text-lg mb-2">
             Hello, It's Me
@@ -66,8 +67,8 @@ const Hero = () => {
           </p>
 
           {/* SOCIAL ICONS */}
-          <div className="flex gap-4 mb-6">
-            {[FaGithub, FaLinkedin, FaTwitter].map((Icon, i) => (
+          <div className="flex gap-4 mb-6 justify-center md:justify-start">
+            {[FaGithub, FaLinkedin, FaTwitter, MailIcon].map((Icon, i) => (
               <div
                 key={i}
                 className="w-10 h-10 flex items-center justify-center rounded-full border border-[#23D3EE] text-[#23D3EE] hover:bg-[#23D3EE] hover:text-black transition cursor-pointer"

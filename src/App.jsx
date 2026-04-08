@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
@@ -12,23 +12,37 @@ import Contact from './sections/Contact'
 import Footer from './sections/Footer'
 import MusicPlayer from './components/MusicPlayer'
 import { Toaster } from "react-hot-toast";
+import Lenis from "lenis";
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+     easing: (t) => t,
+      smoothWheel: true,
+     smoothTouch: true,
+    });
 
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <>
-    <Toaster position="top-right" />
+      <Toaster position="top-right" />
       <CursorTrail />
       <Navbar />
       <Hero />
-      <About/>
-      <Skills/>
-      <Experience/>
-      <Projects/>
-      <Certificates/>
-      <Contact/>
-      <Footer/>
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Certificates />
+      <Contact />
+      <Footer />
       <MusicPlayer />
     </>
   )

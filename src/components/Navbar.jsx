@@ -32,11 +32,10 @@ const Navbar = () => {
        rounded-2xl 
        transition-all duration-500
        border border-white/20
-       ${
-         scrolled
-           ? "bg-[#0f172a]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-           : "bg-[#0f172a]/40 backdrop-blur-xl"
-       }`}
+       ${scrolled
+          ? "bg-[#0f172a]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          : "bg-[#0f172a]/40 backdrop-blur-xl"
+        }`}
     >
 
       {/* Glow Background  */}
@@ -70,17 +69,19 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${
-                active === link.title
+              className={`${active === link.title
                   ? "text-[#23D3EE]"
                   : "text-gray-300"
-              } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
+                } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
               onClick={() => {
                 setActive(link.title);
 
                 const section = document.getElementById(link.id);
                 if (section) {
-                  section.scrollIntoView({ behavior: "smooth" });
+                  window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: "instant",
+                  });
                 }
               }}
             >
@@ -91,11 +92,10 @@ const Navbar = () => {
                 className={`absolute -bottom-1 left-0 h-[2px] 
                 bg-gradient-to-r from-[#23D3EE] to-[#23D3EE] 
                 transition-all duration-500 
-                ${
-                  active === link.title
+                ${active === link.title
                     ? "w-full"
                     : "w-0 group-hover:w-full"
-                }`}
+                  }`}
               ></span>
             </li>
           ))}
@@ -112,11 +112,10 @@ const Navbar = () => {
 
           {/* Dropdown Menu */}
           <div
-            className={`${
-              !toggle
+            className={`${!toggle
                 ? "opacity-0 scale-95 translate-y-[-20px] pointer-events-none"
                 : "opacity-100 scale-100 translate-y-0"
-            } 
+              } 
           fixed top-20 left-1/2 -translate-x-1/2 w-[95%] max-w-md
           h-[calc(100vh-100px)]
           bg-[#0f172a]/70 backdrop-blur-xl
@@ -138,11 +137,10 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${
-                    active === link.title
+                  className={`${active === link.title
                       ? "bg-gradient-to-r from-[#23D3EE] to-[#23D3EE] bg-clip-text text-transparent"
                       : "text-gray-300"
-                  } 
+                    } 
                   text-lg tracking-tighter 
                   transition-all duration-300 
                   group hover:bg-white/0 hover:scale-105 rounded-lg px-3 py-2 cursor-pointer`}
@@ -152,7 +150,10 @@ const Navbar = () => {
 
                     const section = document.getElementById(link.id);
                     if (section) {
-                      section.scrollIntoView({ behavior: "smooth" });
+                      window.scrollTo({
+                        top: section.offsetTop - 80,
+                        behavior: "instant",
+                      });
                     }
                   }}
                 >
