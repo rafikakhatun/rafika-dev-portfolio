@@ -6,7 +6,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 
 const About = () => {
   return (
-    <section className="relative w-full bg-[#030014] px-6 md:px-20 py-16 min-h-screen flex flex-col justify-between">
+    <section id="about" className="relative w-full bg-[#030014] px-6 md:px-20 py-16 min-h-screen flex flex-col justify-between">
       
      <ParticlesBackground />
 

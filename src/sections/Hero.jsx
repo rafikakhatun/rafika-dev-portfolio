@@ -34,7 +34,7 @@ const Hero = () => {
   }, [text, isDeleting, index]);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-[#030014] px-6 md:px-20">
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center bg-[#030014] px-6 md:px-20">
       <ParticlesBackground />
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
 

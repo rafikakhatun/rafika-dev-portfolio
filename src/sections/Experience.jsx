@@ -19,7 +19,7 @@ const experiences = [
 
 const Experience = () => {
     return (
-        <section className="relative w-full bg-[#030014] py-20 md:py-24 px-4 sm:px-6 md:px-20">
+        <section id="experience" className="relative w-full bg-[#030014] py-20 md:py-24 px-4 sm:px-6 md:px-20">
             <ExperienceParticles />
             {/* TITLE */}
             <div className="text-center mb-12 md:mb-16">

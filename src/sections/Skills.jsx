@@ -37,7 +37,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="relative w-full bg-[#030014] py-20 overflow-hidden">
+    <section id="skills" className="relative w-full bg-[#030014] py-20 overflow-hidden">
       <ParticlesBackground />
 
       {/* TITLE */}

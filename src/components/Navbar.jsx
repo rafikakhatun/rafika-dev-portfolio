@@ -5,7 +5,7 @@ const navLinks = [
   { id: "home", title: "Home" },
   { id: "about", title: "About" },
   { id: "skills", title: "Skills" },
-  { id: "expericece", title: "experience" },
+  { id: "experience", title: "experience" },
   { id: "projects", title: "Projects" },
   { id: "certificates", title: "Certificates" },
   { id: "contact", title: "Contact" },
@@ -26,11 +26,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-[100] 
+      className={`fixed top-0 mt-2 left-1/2 -translate-x-1/2 z-[100] 
        w-[97%] max-w-7xl 
        flex items-center py-4 px-6 
        rounded-2xl 
-       transition-all duration-500 relative
+       transition-all duration-500
        border border-white/20
        ${
          scrolled
@@ -39,7 +39,7 @@ const Navbar = () => {
        }`}
     >
 
-      {/* 🔥 Glow Background (ONLY CYAN) */}
+      {/* Glow Background  */}
       <div className="absolute inset-0 -z-10 
         bg-gradient-to-r from-[#23D3EE]/30 via-[#23D3EE]/20 to-transparent 
         blur-2xl opacity-70 animate-pulse"></div>
@@ -75,11 +75,18 @@ const Navbar = () => {
                   ? "text-[#23D3EE]"
                   : "text-gray-300"
               } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
-              onClick={() => setActive(link.title)}
-            >
-              <a href={`#${link.id}`}>{link.title}</a>
+              onClick={() => {
+                setActive(link.title);
 
-              {/* Underline (ONLY CYAN) */}
+                const section = document.getElementById(link.id);
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              {link.title}
+
+              {/* Underline */}
               <span
                 className={`absolute -bottom-1 left-0 h-[2px] 
                 bg-gradient-to-r from-[#23D3EE] to-[#23D3EE] 
@@ -120,7 +127,7 @@ const Navbar = () => {
           rounded-2xl 
           flex flex-col`}
           >
-            {/* Glow Background (ONLY CYAN) */}
+            {/* Glow Background  */}
             <div
               className="absolute inset-0 -z-10 rounded-2xl 
               bg-gradient-to-r from-[#23D3EE]/20 via-[#23D3EE]/20 to-transparent 
@@ -142,9 +149,14 @@ const Navbar = () => {
                   onClick={() => {
                     setToggle(false);
                     setActive(link.title);
+
+                    const section = document.getElementById(link.id);
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth" });
+                    }
                   }}
                 >
-                  <a href={`#${link.id}`}>{link.title}</a>
+                  {link.title}
                 </li>
               ))}
             </ul>

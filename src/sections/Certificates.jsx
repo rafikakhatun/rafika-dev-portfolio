@@ -37,7 +37,7 @@ const certificates = [
 
 const Certificates = () => {
     return (
-        <section className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden">
+        <section id="certificates" className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden">
         <ParticlesBackground/>
             
             {/* SECTION TITLE */}

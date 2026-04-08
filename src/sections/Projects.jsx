@@ -51,7 +51,7 @@ const projects = [
 
 const Projects = () => {
     return (
-        <section className="relative w-full bg-[#030014] py-20 px-6 md:px-20">
+        <section id="projects" className="relative w-full bg-[#030014] py-20 px-6 md:px-20">
             <BubblesBackground></BubblesBackground>
 
             {/* TITLE */}

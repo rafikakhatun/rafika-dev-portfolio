@@ -41,7 +41,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden min-h-screen flex flex-col items-center">
+    <section id="contact" className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden min-h-screen flex flex-col items-center">
       <ContactParticles />
       {/* Background Decorative Glow */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
