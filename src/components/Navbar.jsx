@@ -70,18 +70,25 @@ const Navbar = () => {
             <li
               key={link.id}
               className={`${active === link.title
-                  ? "text-[#23D3EE]"
-                  : "text-gray-300"
+                ? "text-[#23D3EE]"
+                : "text-gray-300"
                 } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
+              // এই কোডটি দিয়ে রিপ্লেস করুন
               onClick={() => {
                 setActive(link.title);
-
                 const section = document.getElementById(link.id);
+
                 if (section) {
-                  window.scrollTo({
-                    top: section.offsetTop - 80,
-                    behavior: "instant",
-                  });
+                  if (window.lenis) {
+                    // লেনিস থাকলে এটি ব্যবহার করবে
+                    window.lenis.scrollTo(section, { offset: -80 });
+                  } else {
+                    // ব্যাকআপ হিসেবে ডিফল্ট স্ক্রল
+                    window.scrollTo({
+                      top: section.offsetTop - 80,
+                      behavior: "smooth",
+                    });
+                  }
                 }
               }}
             >
@@ -113,8 +120,8 @@ const Navbar = () => {
           {/* Dropdown Menu */}
           <div
             className={`${!toggle
-                ? "opacity-0 scale-95 translate-y-[-20px] pointer-events-none"
-                : "opacity-100 scale-100 translate-y-0"
+              ? "opacity-0 scale-95 translate-y-[-20px] pointer-events-none"
+              : "opacity-100 scale-100 translate-y-0"
               } 
           fixed top-20 left-1/2 -translate-x-1/2 w-[95%] max-w-md
           h-[calc(100vh-100px)]
@@ -138,8 +145,8 @@ const Navbar = () => {
                 <li
                   key={link.id}
                   className={`${active === link.title
-                      ? "bg-gradient-to-r from-[#23D3EE] to-[#23D3EE] bg-clip-text text-transparent"
-                      : "text-gray-300"
+                    ? "bg-gradient-to-r from-[#23D3EE] to-[#23D3EE] bg-clip-text text-transparent"
+                    : "text-gray-300"
                     } 
                   text-lg tracking-tighter 
                   transition-all duration-300 

@@ -5,10 +5,20 @@ import ParticlesBackground from "../components/ParticlesBackground";
 
 
 const About = () => {
+
+  const scrollToSection = (id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  window.lenis
+    ? window.lenis.scrollTo(el)
+    : el.scrollIntoView({ behavior: "smooth" });
+};
+
   return (
     <section id="about" className="relative w-full bg-[#030014] px-6 md:px-20 py-16 min-h-screen flex flex-col justify-between">
-      
-     <ParticlesBackground />
+
+      <ParticlesBackground />
 
       {/* ================= TOP SECTION ================= */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
@@ -105,11 +115,15 @@ const About = () => {
 
           {/* BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="px-8 py-3 bg-[#23D3EE] text-black rounded-lg font-semibold hover:bg-gray-200 transition">
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="px-8 py-3 bg-[#23D3EE] text-black rounded-lg font-semibold hover:bg-gray-200 transition">
               View Projects
             </button>
 
-            <button className="px-8 py-3 bg-white/10 text-white border border-white/20 rounded-lg font-semibold hover:bg-white/20 transition">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-8 py-3 bg-white/10 text-white border border-white/20 rounded-lg font-semibold hover:bg-white/20 transition">
               Get in Touch
             </button>
           </div>

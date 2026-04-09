@@ -19,6 +19,8 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (loading) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => t,
@@ -26,13 +28,22 @@ function App() {
       smoothTouch: true,
     });
 
+    window.lenis = lenis;
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
-  }, []);
+
+    return () => {
+      lenis.destroy();
+      window.lenis = null;
+    };
+  }, [loading]);
+
+
   return (
     <>
       {loading ? (
