@@ -13,14 +13,17 @@ import Footer from './sections/Footer'
 import MusicPlayer from './components/MusicPlayer'
 import { Toaster } from "react-hot-toast";
 import Lenis from "lenis";
+import Loader from "./components/Loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-     easing: (t) => t,
+      easing: (t) => t,
       smoothWheel: true,
-     smoothTouch: true,
+      smoothTouch: true,
     });
 
     function raf(time) {
@@ -32,20 +35,26 @@ function App() {
   }, []);
   return (
     <>
-      <Toaster position="top-right" />
-      <CursorTrail />
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Certificates />
-      <Contact />
-      <Footer />
-      <MusicPlayer />
+      {loading ? (
+        <Loader onFinish={() => setLoading(false)} />
+      ) : (
+        <>
+          <Toaster position="top-right" />
+          <CursorTrail />
+          <Navbar />
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Certificates />
+          <Contact />
+          <Footer />
+          <MusicPlayer />
+        </>
+      )}
     </>
-  )
+  );
 }
 
 export default App
