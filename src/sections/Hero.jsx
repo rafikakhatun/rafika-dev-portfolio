@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaTwitter, } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
-import profileImage from "../assets/picofme (4).png"
-import { MailCheck, MailIcon } from "lucide-react";
-
+import profileImage from "../assets/picofme (4).png";
+import { FaXTwitter } from "react-icons/fa6";
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
 const Hero = () => {
+
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      link: "https://github.com/rafikakhatun",
+    },
+    {
+      icon: FaLinkedin,
+      link: "https://www.linkedin.com/in/rafika-khatun-7937bb285/",
+    },
+    {
+      icon: FaInstagram,
+      link: "https://www.instagram.com/itsrafika_x/?hl=en",
+    },
+    {
+    icon: FaXTwitter,
+    link: "https://x.com/RafikaKhatun16",
+  },
+  ];
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -68,14 +86,19 @@ const Hero = () => {
 
           {/* SOCIAL ICONS */}
           <div className="flex gap-4 mb-6 justify-center md:justify-start">
-            {[FaGithub, FaLinkedin, FaTwitter, MailIcon].map((Icon, i) => (
-              <div
-                key={i}
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-[#23D3EE] text-[#23D3EE] hover:bg-[#23D3EE] hover:text-black transition cursor-pointer"
-              >
-                <Icon size={18} />
-              </div>
-            ))}
+            {socialLinks.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={i}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-[#23D3EE] text-[#23D3EE] hover:bg-[#23D3EE] hover:text-black hover:shadow-[0_0_15px_#23D3EE] transition cursor-pointer"                >
+                  <Icon size={18} />
+                </a>
+              );
+            })}
           </div>
 
           {/* BUTTON */}
@@ -112,7 +135,7 @@ const Hero = () => {
               {/* IMAGE */}
               <div
                 className="w-full h-full overflow-hidden relative z-10 "
-                
+
               >
                 <img
                   src={profileImage}
