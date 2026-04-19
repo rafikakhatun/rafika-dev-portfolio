@@ -4,18 +4,10 @@
   paint-order: stroke fill;
 }
 
-html.lenis, html.lenis body {
-  height: auto !important;
+html {
+  scroll-behavior: smooth;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
+section {
+  scroll-margin-top: 80px;
 }

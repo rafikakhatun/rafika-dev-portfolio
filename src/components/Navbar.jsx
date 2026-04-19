@@ -18,11 +18,33 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const isScrolled = window.scrollY > 20;
+      setScrolled(prev => (prev !== isScrolled ? isScrolled : prev));
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleScrollToSection = (id, title) => {
+    setActive(title);
+    setToggle(false); // mobile er jonno
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      const yOffset = -80; // navbar height
+      const y =
+        section.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <nav
@@ -74,23 +96,8 @@ const Navbar = () => {
                 : "text-gray-300"
                 } hover:text-white text-md font-semibold tracking-tight cursor-pointer transition-all duration-300 relative group`}
               // এই কোডটি দিয়ে রিপ্লেস করুন
-              onClick={() => {
-                setActive(link.title);
-                const section = document.getElementById(link.id);
+              onClick={() => handleScrollToSection(link.id, link.title)}
 
-                if (section) {
-                  if (window.lenis) {
-                    // লেনিস থাকলে এটি ব্যবহার করবে
-                    window.lenis.scrollTo(section, { offset: -80 });
-                  } else {
-                    // ব্যাকআপ হিসেবে ডিফল্ট স্ক্রল
-                    window.scrollTo({
-                      top: section.offsetTop - 80,
-                      behavior: "smooth",
-                    });
-                  }
-                }
-              }}
             >
               {link.title}
 
@@ -151,18 +158,8 @@ const Navbar = () => {
                   text-lg tracking-tighter 
                   transition-all duration-300 
                   group hover:bg-white/0 hover:scale-105 rounded-lg px-3 py-2 cursor-pointer`}
-                  onClick={() => {
-                    setToggle(false);
-                    setActive(link.title);
+                  onClick={() => handleScrollToSection(link.id, link.title)}
 
-                    const section = document.getElementById(link.id);
-                    if (section) {
-                      window.scrollTo({
-                        top: section.offsetTop - 80,
-                        behavior: "instant",
-                      });
-                    }
-                  }}
                 >
                   {link.title}
                 </li>
