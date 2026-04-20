@@ -11,10 +11,9 @@ const MusicPlayer = () => {
 
   // PLAYLIST
   const playlist = [
-    { id: 1, name: "Lo-fi Chill", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { id: 2, name: "Deep Focus", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-  ];
-
+  { id: 1, name: "Lo-fi Chill", url: "/music/lofi.mp3" },
+  { id: 2, name: "Deep Focus", url: "/music/focus.mp3" },
+];
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -30,11 +29,20 @@ const MusicPlayer = () => {
     setShowMenu(false);
   };
 
-  useEffect(() => {
+ useEffect(() => {
+  if (audioRef.current) {
+    audioRef.current.load(); // reload new track
     if (isPlaying) {
       audioRef.current.play().catch(() => setIsPlaying(false));
     }
-  }, [currentTrack]);
+  }
+}, [currentTrack]);
+
+  useEffect(() => {
+  if (audioRef.current) {
+    audioRef.current.volume = 0.2; // 20% volume (best for portfolio)
+  }
+}, []);
 
   return (
     <div className="fixed bottom-6 right-6 md:right-10 md:bottom-10 z-[100] flex flex-col items-end gap-2">
