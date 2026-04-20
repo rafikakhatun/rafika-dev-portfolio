@@ -6,31 +6,35 @@ import ParticlesBackground from "../components/ParticlesBackground";
 
 const certificates = [
     {
-        title: "AWS Certified Solutions Architect",
-        issuer: "Amazon Web Services",
-        date: "Dec 2024",
-        color: "from-[#C47609] to-[#744C1B]", // Golden/Orange
-        description: "Cloud Infrastructure & Security"
+        title: "Introduction to Front-End Development",
+        issuer: "Simplilearn SkillUp",
+        date: "Sep 2025",
+        color: "from-[#C47609] to-[#744C1B]",
+        description: "Fundamentals of HTML, CSS, JavaScript and modern frontend development",
+        link: "/certificates/frontend-intro-certificate.pdf"
     },
     {
-        title: "React Advanced Certification",
-        issuer: "Meta Blueprint",
-        date: "Nov 2024",
-        color: "from-[#2A8A9D] to-[#164E58]", // Teal/Cyan
-        description: "Cloud Infrastructure & Security"
+        title: "Frontend Developer (React)",
+        issuer: "HackerRank",
+        date: "Dec 2025",
+        color: "from-[#2A8A9D] to-[#164E58]",
+        description: "Validated skills in React.js, component architecture, state management and JavaScript problem-solving",
+        link: "/certificates/frontend-react-certificate.pdf"
     },
+
+
     {
         title: "Full Stack Web Developer",
         issuer: "Google Cloud",
         date: "Oct 2024",
-        color: "from-[#376BC6] to-[#27447D]", // Blue
+        color: "from-[#376BC6] to-[#27447D]",
         description: "Cloud Infrastructure & Security"
     },
     {
         title: "UI/UX Design Professional",
         issuer: "Adobe",
         date: "Sep 2024",
-        color: "from-[#C13F5B] to-[#6F2C45]", // pink
+        color: "from-[#C13F5B] to-[#6F2C45]",
         description: "Cloud Infrastructure & Security"
     },
 ];
@@ -38,8 +42,8 @@ const certificates = [
 const Certificates = () => {
     return (
         <section id="certificates" className="relative w-full bg-[#030014] py-24 px-6 overflow-hidden">
-        <ParticlesBackground/>
-            
+            <ParticlesBackground />
+
             {/* SECTION TITLE */}
             <div className="text-center mb-20">
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
@@ -47,7 +51,7 @@ const Certificates = () => {
                 </h2>
             </div>
 
-        
+
             {/* CARDS GRID */}
             <div className="max-w-7xl  mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
                 {certificates.map((cert, index) => (
@@ -79,7 +83,7 @@ const Certificates = () => {
                             <h4 className="text-[#1f2937] font-serif font-extrabold text-[12px] uppercase leading-tight">
                                 Certificate <br /> <span className="text-[10px] font-normal lowercase italic">of achievement</span>
                             </h4>
-                        
+
                             <div className="mt-3 w-full">
                                 <p className="text-[9px] text-gray-600 font-medium uppercase tracking-wider border-t border-gray-300 pt-2 px-2">
                                     This is to certify that the holder has mastered
@@ -88,7 +92,7 @@ const Certificates = () => {
                                     {cert.description}
                                 </p>
                             </div>
-                            
+
                             <div className="w-16 h-[1px] bg-gray-400 mt-3"></div>
                         </motion.div>
 
@@ -112,7 +116,12 @@ const Certificates = () => {
                                 </div>
                             </div>
 
-                            <a href="#" className="inline-flex items-center gap-2 px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white text-xs font-bold hover:bg-white hover:text-black transition-all">
+                            <a
+                                href={cert.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white text-xs font-bold hover:bg-white hover:text-black transition-all"
+                            >
                                 View <FiExternalLink size={14} />
                             </a>
                         </div>
@@ -125,7 +134,7 @@ const Certificates = () => {
             {/* BOTTOM DECORATION */}
             <div className="flex justify-center gap-3 mt-16">
                 <div className="w-12 h-1.5 bg-[#23D3EE] rounded-full shadow-[0_0_10px_#23D3EE]"></div>
-               
+
             </div>
         </section>
     );
