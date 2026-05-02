@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaInstagram, } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
-import profileImage from "../assets/picofme (4).png";
+import profileImage from "../assets/picofme (8).png";
 import { FaXTwitter } from "react-icons/fa6";
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 

@@ -1,19 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import profileImg from "../assets/picofme (2).png";
+import profileImg from "../assets/picofme (11).png";
 import ParticlesBackground from "../components/ParticlesBackground";
 
 
 const About = () => {
 
   const scrollToSection = (id) => {
-  const el = document.getElementById(id);
-  if (!el) return;
+    const el = document.getElementById(id);
+    if (!el) return;
 
-  window.lenis
-    ? window.lenis.scrollTo(el)
-    : el.scrollIntoView({ behavior: "smooth" });
-};
+    window.lenis
+      ? window.lenis.scrollTo(el)
+      : el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="about" className="relative w-full bg-[#030014] px-6 md:px-20 py-16 min-h-screen flex flex-col justify-between">
@@ -34,14 +34,14 @@ const About = () => {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="w-[240px] md:w-[300px] aspect-square relative"
+              className="w-[320px] md:w-[420px] aspect-square relative"
             >
               {/* Glow */}
               <div className="absolute inset-0 bg-cyan-400/10 blur-[80px] rounded-full scale-125"></div>
 
               {/* Hexagon */}
               <div
-                className="absolute inset-0 z-20 pointer-events-none"
+                className="absolute inset-0 z-20 pointer-events-none overflow-visible"
                 style={{
                   filter:
                     "drop-shadow(0 0 10px #22d3ee) drop-shadow(0 0 20px #22d3ee)",
@@ -64,13 +64,14 @@ const About = () => {
                     <img
                       src={profileImg}
                       alt="Profile"
-                      className="w-full h-full object-cover opacity-90 hover:opacity-100"
+                      className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 scale-125 -translate-y-0 translate-x-4"
                     />
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
+
         </motion.div>
 
         {/* RIGHT CONTENT */}
