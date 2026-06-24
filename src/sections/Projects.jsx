@@ -8,6 +8,7 @@ import weddingManagement from "../assets/wedding-management.png";
 import logistic from "../assets/logistic-landing-page.png";
 import weddingEvents from "../assets/wedding-events.png";
 import coffee from "../assets/coffee-landing-page.png";
+import netflix from "../assets/netflix.jpeg"
 import BubblesBackground from "../components/BubblesBackground";
 
 const projects = [
@@ -30,6 +31,12 @@ const projects = [
         live: "https://example.com",
     },
     {
+        name: "Netflix Clone",
+        description: "Movie streaming interface with dynamic category browsing and preview features.",
+        image: netflix,
+        live: "https://example.com",
+    },
+    {
         name: "Wedding Events",
         description: "Elegant event showcase platform focusing on high-quality visuals and galleries.",
         image: weddingEvents,
@@ -41,12 +48,7 @@ const projects = [
         image: coffee,
         live: "https://example.com",
     },
-    {
-        name: "Netflix Clone",
-        description: "Movie streaming interface with dynamic category browsing and preview features.",
-        image: edxapp,
-        live: "https://example.com",
-    },
+    
 ];
 
 const Projects = () => {
