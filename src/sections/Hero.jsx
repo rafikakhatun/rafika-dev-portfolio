@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaInstagram, } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
-import profileImage from "../assets/picofme (8).png";
+import profileImage from "../assets/picofme (12).png";
 import { FaXTwitter } from "react-icons/fa6";
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
@@ -136,7 +136,7 @@ const Hero = () => {
                 <img
                   src={profileImage}
                   alt="profile"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full mt-[32px] md:mt-[36px] object-cover object-top"
                   style={{
                     transform: "scale(1.1) translateY(-10%)",
                     transformOrigin: "top center"
