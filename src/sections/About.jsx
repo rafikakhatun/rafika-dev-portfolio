@@ -64,7 +64,7 @@ const About = () => {
                     <img
                       src={profileImg}
                       alt="Profile"
-                      className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 scale-125 -translate-y-0 translate-x-4"
+                      className="w-60 h-60 md:min-w-80 md:h-72 object-cover object-top opacity-90 hover:opacity-100 scale-125 translate-y-12 translate-x-[37px] md:translate-x-12 md:translate-y-16"
                     />
                   </div>
                 </div>
