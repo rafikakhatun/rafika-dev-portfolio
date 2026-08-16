@@ -45,9 +45,9 @@ export default function Loader({ onFinish }) {
                     <motion.span
                         key={index}
                         variants={wordAnimation}
-                        className="relative chrome-text mx-2 inline-block font-black italic tracking-tighter uppercase"
+                        className="relative  chrome-text mx-2 inline-block font-black italic tracking-tighter uppercase"
                         style={{
-                            fontSize: '5rem',
+                             fontSize: 'clamp(3rem, 8vw, 5rem)',
                             display: 'inline-block',
                             backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #23D3EE 40%, #FFFFFF 50%, #23D3EE 60%, #0E7490 100%)',
                             WebkitBackgroundClip: 'text',

@@ -31,7 +31,7 @@ const MusicPlayer = () => {
 
  useEffect(() => {
   if (audioRef.current) {
-    audioRef.current.load(); // reload new track
+    audioRef.current.load(); 
     if (isPlaying) {
       audioRef.current.play().catch(() => setIsPlaying(false));
     }
@@ -40,7 +40,7 @@ const MusicPlayer = () => {
 
   useEffect(() => {
   if (audioRef.current) {
-    audioRef.current.volume = 0.2; // 20% volume (best for portfolio)
+    audioRef.current.volume = 0.2; 
   }
 }, []);
 

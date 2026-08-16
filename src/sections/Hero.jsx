@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaInstagram, } from "react-icons/fa";
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
-import profileImage from "../assets/picofme (4).png";
+import profileImage from "../assets/picofme (12).png";
 import { FaXTwitter } from "react-icons/fa6";
 const roles = ["Frontend Developer", "React Developer", "Problem Solver"];
 
@@ -22,9 +22,9 @@ const Hero = () => {
       link: "https://www.instagram.com/itsrafika_x/?hl=en",
     },
     {
-    icon: FaXTwitter,
-    link: "https://x.com/RafikaKhatun16",
-  },
+      icon: FaXTwitter,
+      link: "https://x.com/RafikaKhatun16",
+    },
   ];
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
@@ -122,7 +122,6 @@ const Hero = () => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="w-[280px] md:w-[380px] aspect-square relative flex items-center justify-center"
             >
-
               {/* OUTER GLOW STRONG */}
               <div className="absolute inset-0 rounded-[30%] shadow-[0_0_80px_#23D3EE] opacity-80"></div>
 
@@ -133,19 +132,19 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-[30%] bg-[#23D3EE]/10 blur-xl"></div>
 
               {/* IMAGE */}
-              <div
-                className="w-full h-full overflow-hidden relative z-10 "
-
-              >
+              <div className="absolute inset-0 z-10 overflow-hidden rounded-[30%]">
                 <img
                   src={profileImage}
                   alt="profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full mt-[32px] md:mt-[36px] object-cover object-top"
+                  style={{
+                    transform: "scale(1.1) translateY(-10%)",
+                    transformOrigin: "top center"
+                  }}
                 />
               </div>
 
             </motion.div>
-
           </div>
         </motion.div>
       </div>
